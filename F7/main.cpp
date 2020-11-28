@@ -18,19 +18,19 @@
 #include <LFramework/DeviceNetwork/TaskManager.h>
 
 using namespace LFramework;
-using namespace LFramework::DeviceNetwork;
+using namespace MicroNetwork;
 
 
-class TestTask : public LFramework::DeviceNetwork::Task {
+class TestTask : public Device::Task {
 public:
-	bool packet(PacketHeader header, const void* data) override {
+	bool packet(Common::PacketHeader header, const void* data) override {
 		lfDebug() << "Task packet receive: " << header.id << ":" << header.size;
 		return true;
 	}
 
-	void run(ITaskContext* context) override {
+	void run(Device::ITaskContext* context) override {
 		lfDebug() << "Task started";
-		MaxPacket packet;
+		Common::MaxPacket packet;
 		packet.header.id = 7;
 		packet.header.size = 3;
 		packet.payload[0] = 0;
@@ -47,12 +47,12 @@ public:
 };
 
 
-class TestTaskManager : public LFramework::DeviceNetwork::TaskManager {
+class TestTaskManager : public Device::TaskManager {
 public:
-	Task* createTask() {
+	Device::Task* createTask() {
 		return new TestTask();
 	}
-	void deleteTask(Task* task) {
+	void deleteTask(Device::Task* task) {
 		delete task;
 	}
 };
@@ -69,7 +69,7 @@ extern"C" void StartDefaultTask(void const * argument){
 
 	auto taskManager = new TestTaskManager();
 
-	DeviceNetwork::Node* node = new DeviceNetwork::Node(taskManager);
+	Device::Node* node = new Device::Node(taskManager);
 
 	usbTransmitter->bind(node);
 	node->bind(usbTransmitter);
