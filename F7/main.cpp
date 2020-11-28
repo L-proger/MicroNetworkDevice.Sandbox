@@ -13,13 +13,12 @@
 
 #include <Usb/Usb.h>
 
-#include <LFramework/DeviceNetwork/Node.h>
-#include <LFramework/DeviceNetwork/Device/UsbTransmitter.h>
-#include <LFramework/DeviceNetwork/TaskManager.h>
+#include <MicroNetwork/Device/Node.h>
+#include <MicroNetwork/Device/UsbTransmitter.h>
+#include <MicroNetwork/Device/TaskManager.h>
 
 using namespace LFramework;
 using namespace MicroNetwork;
-
 
 class TestTask : public Device::Task {
 public:
