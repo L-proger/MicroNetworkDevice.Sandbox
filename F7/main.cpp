@@ -48,6 +48,14 @@ public:
 
 class TestTaskManager : public Device::TaskManager {
 public:
+	std::size_t getTasksCount() {
+		return 1;
+	}
+	bool getTaskId(std::size_t id, LFramework::Guid& result) {
+		result = {};
+		return id == 0;
+	}
+
 	Device::Task* createTask() {
 		return new TestTask();
 	}
