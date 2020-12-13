@@ -16,18 +16,19 @@
 #include <MicroNetwork/Device/Node.h>
 #include <MicroNetwork/Device/UsbTransmitter.h>
 #include <MicroNetwork/Device/TaskManager.h>
+#include <MicroNetwork/Device/Task.h>
 
 using namespace LFramework;
 using namespace MicroNetwork;
 
 class TestTask : public Device::Task {
 public:
-	bool packet(Common::PacketHeader header, const void* data) override {
+	LFramework::Result packet(Common::PacketHeader header, const void* data) {
 		lfDebug() << "Task packet receive: " << header.id << ":" << header.size;
-		return true;
+		return LFramework::Result::Ok;
 	}
 
-	void run(Device::ITaskContext* context) override {
+	LFramework::Result run(LFramework::ComPtr<Device::ITaskContext> context) {
 		lfDebug() << "Task started";
 		Common::MaxPacket packet;
 		packet.header.id = 7;
@@ -35,13 +36,20 @@ public:
 		packet.payload[0] = 0;
 		packet.payload[1] = 0;
 		packet.payload[2] = 0;
-		while(!context->isExitRequested()){
+		while(true){
+			bool exitRequested = false;
+			context->isExitRequested(exitRequested);
+			if(exitRequested){
+				break;
+			}
+
 			context->readPackets();
-			bool writeResult = context->packet(packet.header, packet.payload.data());
+			auto writeResult = context->packet(packet.header, packet.payload.data());
 			//lfDebug() << "Task packet write: " << (writeResult ? "OK" : "FAIL");
 			Threading::ThisThread::sleepForMs(10);
 		}
 		lfDebug() << "Task stopped";
+		return LFramework::Result::Ok;
 	}
 };
 
@@ -52,12 +60,12 @@ public:
 		return 1;
 	}
 	bool getTaskId(std::size_t id, LFramework::Guid& result) {
-		result = {};
+		result = { 0x292464d1, 0xaf7a, 0x4e01, { 0x98, 0xc6, 0x27, 0x30, 0x48, 0x3d, 0x36, 0x6f } };
 		return id == 0;
 	}
 
-	Device::Task* createTask() {
-		return new TestTask();
+	LFramework::ComPtr<Device::ITask> createTask() {
+		return LFramework::ComPtr<Device::ITask>::create<TestTask>();
 	}
 	void deleteTask(Device::Task* task) {
 		delete task;
