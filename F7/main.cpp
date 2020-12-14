@@ -23,7 +23,7 @@ using namespace MicroNetwork;
 
 class TestTask : public Device::Task {
 public:
-	LFramework::Result packet(Common::PacketHeader header, const void* data) {
+	LFramework::Result packet(Common::PacketHeader header, const void* data) override {
 		lfDebug() << "Task packet receive: " << header.id << ":" << header.size;
 		return LFramework::Result::Ok;
 	}
@@ -85,6 +85,7 @@ extern"C" void StartDefaultTask(void const * argument){
 	auto taskManager = new TestTaskManager();
 
 	Device::Node* node = new Device::Node(taskManager);
+
 
 	usbTransmitter->bind(node);
 	node->bind(usbTransmitter);
