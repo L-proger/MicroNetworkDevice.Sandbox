@@ -16,42 +16,11 @@
 #include <MicroNetwork/Device/Node.h>
 #include <MicroNetwork/Device/UsbTransmitter.h>
 #include <MicroNetwork/Device/TaskManager.h>
-#include <MicroNetwork/Device/Task.h>
+#include <Tasks/ReadMemoryTask.h>
 
 using namespace LFramework;
 using namespace MicroNetwork;
 
-class TestTask : public Device::Task {
-public:
-	LFramework::Result packet(Common::PacketHeader header, const void* data) override {
-		lfDebug() << "Task packet receive: " << header.id << ":" << header.size;
-		return LFramework::Result::Ok;
-	}
-
-	LFramework::Result run(LFramework::ComPtr<Device::ITaskContext> context) {
-		lfDebug() << "Task started";
-		Common::MaxPacket packet;
-		packet.header.id = 7;
-		packet.header.size = 3;
-		packet.payload[0] = 0;
-		packet.payload[1] = 0;
-		packet.payload[2] = 0;
-		while(true){
-			bool exitRequested = false;
-			context->isExitRequested(exitRequested);
-			if(exitRequested){
-				break;
-			}
-
-			context->readPackets();
-			auto writeResult = context->packet(packet.header, packet.payload.data());
-			//lfDebug() << "Task packet write: " << (writeResult ? "OK" : "FAIL");
-			Threading::ThisThread::sleepForMs(10);
-		}
-		lfDebug() << "Task stopped";
-		return LFramework::Result::Ok;
-	}
-};
 
 
 class TestTaskManager : public Device::TaskManager {
@@ -65,7 +34,7 @@ public:
 	}
 
 	LFramework::ComPtr<Device::ITask> createTask() {
-		return LFramework::ComPtr<Device::ITask>::create<TestTask>();
+		return LFramework::ComPtr<Device::ITask>::create<ReadMemoryTask>();
 	}
 	void deleteTask(Device::Task* task) {
 		delete task;
