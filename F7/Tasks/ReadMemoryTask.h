@@ -12,7 +12,7 @@ public:
 	}
 
 	LFramework::Result run(LFramework::ComPtr<MicroNetwork::Device::ITaskContext> context) {
-		lfDebug() << "Task started";
+		lfDebug() << "ReadMemoryTask enter";
 		MicroNetwork::Common::MaxPacket packet;
 		packet.header.id = 7;
 		packet.header.size = 3;
@@ -31,7 +31,7 @@ public:
 			//lfDebug() << "Task packet write: " << (writeResult ? "OK" : "FAIL");
 			LFramework::Threading::ThisThread::sleepForMs(1);
 		}
-		lfDebug() << "Task stopped";
+		lfDebug() << "ReadMemoryTask exit";
 		return LFramework::Result::Ok;
 	}
 };

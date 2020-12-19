@@ -75,6 +75,12 @@ extern"C" void StartDefaultTask(void const * argument){
 
 }
 
+
+
+
+
+
+
 extern "C" void vApplicationStackOverflowHook(xTaskHandle xTask, signed char *pcTaskName){
 	Debug::Log() << "Stack overflow in task " << (const char*)pcTaskName;
 	for(;;);
