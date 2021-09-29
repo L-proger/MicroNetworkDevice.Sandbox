@@ -1,0 +1,13 @@
+target_sources(Cube 
+	PRIVATE 
+		freertos.c
+		gpio.c
+		main.c
+		stm32f7xx_hal_msp.c
+		stm32f7xx_it.c
+		syscalls.c
+		system_stm32f7xx.c
+		tim.c
+		usart.c
+		usb_otg.c
+)

@@ -33,9 +33,19 @@ set(CMAKE_EXECUTABLE_SUFFIX_ASM .elf)
 
 set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 
-set(MCU_ARCH cortex-m4)
+set(MCU_ARCH cortex-m7)
 set(MCU_FLOAT_ABI softfp)
 set(MCU_FPU fpv4-sp-d16)
+
+#-fmessage-length=0
+#-fsigned-char
+#-ffunction-sections
+#-fdata-sections
+
+#-Wl,--undefined=uxTopUsedPriority
+
+#${cross_prefix}${cross_objcopy}${cross_suffix} -O binary "F7Usb.elf"
+#${cross_prefix}${cross_size}${cross_suffix}  --format=berkeley "F7Usb.elf"
 
 set(CMAKE_CXX_FLAGS "${COMMON_FLAGS} -std=c++17 -fno-exceptions -fno-rtti -fno-use-cxa-atexit -fno-threadsafe-statics")
 set(CMAKE_C_FLAGS "${COMMON_FLAGS} -std=c11")
