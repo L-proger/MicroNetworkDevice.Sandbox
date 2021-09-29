@@ -1,6 +1,9 @@
 
 set(TOOLCHAIN_DIR "C:/Program Files (x86)/GNU Arm Embedded Toolchain/10 2021.07")
 
+GET_FILENAME_COMPONENT(STM32_CMAKE_DIR ${CMAKE_CURRENT_LIST_FILE} DIRECTORY)
+list(APPEND CMAKE_MODULE_PATH ${STM32_CMAKE_DIR})
+
 set(EXE_SUFFIX ".exe")
 
 set(TOOLCHAIN_TRIPLET "arm-none-eabi")
@@ -47,9 +50,12 @@ set(MCU_FPU fpv4-sp-d16)
 #${cross_prefix}${cross_objcopy}${cross_suffix} -O binary "F7Usb.elf"
 #${cross_prefix}${cross_size}${cross_suffix}  --format=berkeley "F7Usb.elf"
 
-set(CMAKE_CXX_FLAGS "${COMMON_FLAGS} -std=c++17 -fno-exceptions -fno-rtti -fno-use-cxa-atexit -fno-threadsafe-statics")
-set(CMAKE_C_FLAGS "${COMMON_FLAGS} -std=c11")
-set(CMAKE_EXE_LINKER_FLAGS "-Wl,-gc-sections -specs=nosys.specs -specs=nano.specs -T ${MCU_LINKER_SCRIPT}")
+set(COMMON_FLAGS "-mcpu=${MCU_ARCH} -mthumb -mfloat-abi=${MCU_FLOAT_ABI} -mfpu=${MCU_FPU} -ffunction-sections -fdata-sections -fsigned-char -g  -fmessage-length=0")
+
+set(CMAKE_CXX_FLAGS "${COMMON_FLAGS} -std=c++17 -fno-exceptions -fno-rtti -fno-use-cxa-atexit -fno-threadsafe-statics" CACHE INTERNAL "cxx compiler flags")
+set(CMAKE_C_FLAGS "${COMMON_FLAGS} -std=c11" CACHE INTERNAL "c compiler flags")
+
+set(CMAKE_EXE_LINKER_FLAGS "-Wl,-gc-sections -specs=nosys.specs -specs=nano.specs -T ${MCU_LINKER_SCRIPT}" CACHE INTERNAL "exe compiler flags")
 SET(CMAKE_ASM_FLAGS "-mthumb -mcpu=${MCU_ARCH} -mfpu=${MCU_FPU} -mfloat-abi=${MCU_FLOAT_ABI} -x assembler-with-cpp" CACHE INTERNAL "asm compiler flags")
 
 
@@ -62,3 +68,6 @@ SET(CMAKE_C_FLAGS_RELEASE "-O3 -flto" CACHE INTERNAL "c compiler flags release")
 SET(CMAKE_CXX_FLAGS_RELEASE "-O3 -flto" CACHE INTERNAL "cxx compiler flags release")
 SET(CMAKE_ASM_FLAGS_RELEASE "" CACHE INTERNAL "asm compiler flags release")
 SET(CMAKE_EXE_LINKER_FLAGS_RELEASE "-flto" CACHE INTERNAL "linker flags release")
+
+include(fetch_utils)
+

@@ -1,15 +1,17 @@
 ﻿{
   "configurations": [
     {
-      "name": "x64-Debug",
+      "name": "MCU-Debug",
       "generator": "Ninja",
       "configurationType": "Debug",
-      "inheritEnvironments": [ "msvc_x64_x64" ],
+      "inheritEnvironments": [ "gcc-arm" ],
       "buildRoot": "${projectDir}\\out\\build\\${name}",
       "installRoot": "${projectDir}\\out\\install\\${name}",
       "cmakeCommandArgs": "",
       "buildCommandArgs": "",
-      "ctestCommandArgs": ""
+      "ctestCommandArgs": "",
+      "cmakeToolchain": "E:\\L\\Projects\\MicroNetworkDevice.Sandbox\\F7\\cmake\\stm32_gcc.cmake",
+      "intelliSenseMode": "linux-gcc-arm"
     }
   ]
 }
