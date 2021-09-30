@@ -28,23 +28,23 @@ namespace LFramework{
     template<class TImplementer>
     struct InterfaceRemap<MicroNetwork::Common::IDataReceiver, TImplementer> : public InterfaceRemap<LFramework::IUnknown, TImplementer>{
         virtual Result LFRAMEWORK_COM_CALL packet(MicroNetwork::Common::PacketHeader header, const void* data){
-            try{
+            /*try {
                 this->implementer()->packet(header, data);
             }
             catch(...){
                 return LFramework::Result::UnknownFailure;
-            }
+            }*/
             return LFramework::Result::Ok;
         }
     };
     //Interface Wrapper
     template<>
-    class LFramework::InterfaceWrapper<MicroNetwork::Common::IDataReceiver>{
+    class InterfaceWrapper<MicroNetwork::Common::IDataReceiver>{
     public:
         void packet(MicroNetwork::Common::PacketHeader header, const void* data){
             auto comCallResult = _abi->packet(header, data);
             if(comCallResult != Result::Ok){
-                throw ComException(comCallResult);
+               // throw ComException(comCallResult);
             }
         }
     private:

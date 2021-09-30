@@ -17,7 +17,7 @@
 #include <MicroNetwork/Device/UsbTransmitter.h>
 #include <MicroNetwork/Device/TaskManager.h>
 #include <Tasks/ReadMemoryTask.h>
-
+#include <type_traits>
 using namespace LFramework;
 using namespace MicroNetwork;
 
