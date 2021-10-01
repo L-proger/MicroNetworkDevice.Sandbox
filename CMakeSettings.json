@@ -12,6 +12,43 @@
       "ctestCommandArgs": "",
       "cmakeToolchain": "E:\\L\\Projects\\MicroNetworkDevice.Sandbox\\F7\\cmake\\stm32_gcc.cmake",
       "inheritEnvironments": [ "gcc-arm" ]
+    },
+    {
+      "name": "IoT-Debug",
+      "generator": "Ninja",
+      "configurationType": "Debug",
+      "buildRoot": "${projectDir}\\out\\build\\${name}",
+      "installRoot": "${projectDir}\\out\\install\\${name}",
+      "cmakeCommandArgs": "",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": "",
+      "cmakeToolchain": "E:\\L\\Projects\\MicroNetworkDevice.Sandbox\\F7\\cmake\\stm32_gcc.cmake",
+      "inheritEnvironments": [ "gcc-arm" ],
+      "variables": [
+      
+        {
+          "name": "CMAKE_C_FLAGS",
+          "value": "-nostartfiles",
+          "type": "STRING"
+        },
+        {
+          "name": "CMAKE_CXX_FLAGS",
+          "value": "-fno-rtti -fno-exceptions -specs=nosys.specs -mthumb -mcpu=cortex-m3",
+          "type": "STRING"
+        },
+      
+        {
+          "name": "CMAKE_SYSTEM_NAME",
+          "value": "Generic",
+          "type": "STRING"
+        },
+        {
+          "name": "CMAKE_SYSTEM_PROCESSOR",
+          "value": "arm",
+          "type": "STRING"
+        }
+      ],
+      "intelliSenseMode": "linux-gcc-arm"
     }
   ]
 }
