@@ -53,10 +53,10 @@
           "text": "monitor reset halt",
           "ignoreFailures": false
         },
-        {
-          "text": "monitor flash erase_address 0x08000000 0x00100000",
-          "ignoreFailures": false
-        },
+        //{
+        //  "text": "monitor flash erase_address 0x08000000 0x00100000",
+        //  "ignoreFailures": false
+        //},
         {
           "text": "load",
           "description": "download file to MCU",

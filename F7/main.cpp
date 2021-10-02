@@ -47,7 +47,7 @@ extern"C" void StartDefaultTask(void const * argument){
 	Terminal::out << Terminal::Ansi::Cursor::MoveHome() << Terminal::Ansi::Viewport::ClearScreen();
 	Debug::Log() << "Hello!";
 
-/*	Usb* usb = new Usb();
+	Usb* usb = new Usb();
 	Device::UsbTransmitter* usbTransmitter = new Device::UsbTransmitter(usb->usbInterface);
 
 
@@ -67,7 +67,8 @@ extern"C" void StartDefaultTask(void const * argument){
 
 	lfDebug() << "Starting USB transmitter";
 	usbTransmitter->start();
-	lfDebug() << "USB transmitter started";*/
+	lfDebug() << "USB transmitter started";
+
 	for(;;){
 		Threading::ThisThread::sleepForMs(100);
 		HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
