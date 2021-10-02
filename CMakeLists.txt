@@ -11,7 +11,7 @@ set(CMAKE_TOOLCHAIN_FILE ${CMAKE_CURRENT_SOURCE_DIR}/F7/cmake/stm32_gcc.cmake)
 project(sandbox CXX C ASM)
 
 
-#stm32_fetch_cmsis()
+#stm32_fetch_cmsis()D
 
 set(PROJECT_NAME "sandbox")
 add_executable(${PROJECT_NAME} )

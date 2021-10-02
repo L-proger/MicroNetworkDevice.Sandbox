@@ -1,0 +1,7 @@
+{
+    //"cmake.generator": "C:\\PROGRAM FILES\\MICROSOFT VISUAL STUDIO\\2022\\PREVIEW\\COMMON7\\IDE\\COMMONEXTENSIONS\\MICROSOFT\\CMAKE\\Ninja\\ninja.exe",
+    "cortex-debug.armToolchainPath": "C:\\Program Files (x86)\\GNU Arm Embedded Toolchain\\10 2021.07\\bin",
+		"cortex-debug.openocdPath": "C:\\xpack-openocd-0.11.0-1-win32-x64\\xpack-openocd-0.11.0-1\\bin\\openocd.exe",
+        "cmake.generator": "Unix Makefiles",
+    "cmake.cmakePath": "C:\\PROGRAM FILES\\MICROSOFT VISUAL STUDIO\\2022\\PREVIEW\\COMMON7\\IDE\\COMMONEXTENSIONS\\MICROSOFT\\CMAKE\\CMake\\bin\\cmake.exe",
+}
