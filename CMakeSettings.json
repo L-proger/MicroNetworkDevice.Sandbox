@@ -1,54 +1,30 @@
 ﻿{
+  "environments": [
+    {
+      "BuildDir": "${workspaceRoot}\\build",
+      "InstallDir": "${workspaceRoot}\\install"
+    }
+  ],
   "configurations": [
     {
-      "name": "MCU-Debug",
+      "name": "MCUDebug",
       "generator": "Ninja",
       "configurationType": "Debug",
-      "intelliSenseMode": "linux-gcc-arm",
-      "buildRoot": "${projectDir}\\out\\build\\${name}",
-      "installRoot": "${projectDir}\\out\\install\\${name}",
+      "buildRoot": "${env.FullBuildDir}",
+      "installRoot": "${env.FullInstallDir}",
       "cmakeCommandArgs": "",
       "buildCommandArgs": "",
       "ctestCommandArgs": "",
-      "cmakeToolchain": "E:\\L\\Projects\\MicroNetworkDevice.Sandbox\\F7\\cmake\\stm32_gcc.cmake",
-      "inheritEnvironments": [ "gcc-arm" ]
-    },
-    {
-      "name": "IoT-Debug",
-      "generator": "Ninja",
-      "configurationType": "Debug",
-      "buildRoot": "${projectDir}\\out\\build\\${name}",
-      "installRoot": "${projectDir}\\out\\install\\${name}",
-      "cmakeCommandArgs": "",
-      "buildCommandArgs": "",
-      "ctestCommandArgs": "",
-      "cmakeToolchain": "E:\\L\\Projects\\MicroNetworkDevice.Sandbox\\F7\\cmake\\stm32_gcc.cmake",
       "inheritEnvironments": [ "gcc-arm" ],
-      "variables": [
-      
+      "intelliSenseMode": "linux-gcc-arm",
+
+      "environments": [
         {
-          "name": "CMAKE_C_FLAGS",
-          "value": "-nostartfiles",
-          "type": "STRING"
-        },
-        {
-          "name": "CMAKE_CXX_FLAGS",
-          "value": "-fno-rtti -fno-exceptions -specs=nosys.specs -mthumb -mcpu=cortex-m3",
-          "type": "STRING"
-        },
-      
-        {
-          "name": "CMAKE_SYSTEM_NAME",
-          "value": "Generic",
-          "type": "STRING"
-        },
-        {
-          "name": "CMAKE_SYSTEM_PROCESSOR",
-          "value": "arm",
-          "type": "STRING"
+          "FullBuildDir": "${env.BuildDir}\\${name}",
+          "FullInstallDir": "${env.InstallDir}\\${name}"
         }
-      ],
-      "intelliSenseMode": "linux-gcc-arm"
+      ]
+
     }
   ]
 }

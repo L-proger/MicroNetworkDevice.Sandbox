@@ -1,0 +1,105 @@
+{
+  "version": "0.2.1",
+  "defaults": {},
+  "configurations": [
+    {
+      "type": "cppdbg",
+      "name": "Flash and Run",
+      "project": "CMakeLists.txt",
+      "projectTarget": "sandbox.elf",
+      "cwd": "${env.FullBuildDir}",
+      "program": "${env.FullBuildDir}\\sandbox.elf",
+      "MIMode": "gdb",
+      "externalConsole": false,
+      "inheritEnvironments": [
+        "gcc_arm"
+      ],
+      "miDebuggerPath": "C:\\Program Files (x86)\\GNU Arm Embedded Toolchain\\10 2021.07\\bin\\arm-none-eabi-gdb.exe",
+      // "setupCommands": [
+      //{
+      //  "text": "set logging on",
+      //  "description": "load file",
+      //  "ignoreFailures": false
+      //},
+      //{
+      //  "text": " set logging file D:/my_god_object.log",
+      //  "description": "load file",
+      //  "ignoreFailures": false
+      //},
+      //],
+      "targetArchitecture": "arm",
+      "customLaunchSetupCommands": [
+        //{
+        //  "text": "set architecture arm",
+        //  "description": "CD to work dir",
+        //  "ignoreFailures": false
+        //},
+        {
+          "text": "-environment-cd ${env.FullBuildDir}",
+          "description": "CD to work dir",
+          "ignoreFailures": false
+        },
+        {
+          "text": "file sandbox.elf",
+          "description": "put file to gdb",
+          "ignoreFailures": false
+        },
+        {
+          "text": "target extended-remote localhost:3333",
+          "description": "connect to server",
+          "ignoreFailures": false
+        },
+        {
+          "text": "monitor reset halt",
+          "ignoreFailures": false
+        },
+        {
+          "text": "monitor flash erase_address 0x08000000 0x00100000",
+          "ignoreFailures": false
+        },
+        {
+          "text": "load",
+          "description": "download file to MCU",
+          "ignoreFailures": false
+        },
+        {
+          "text": "monitor reset init",
+          "ignoreFailures": true
+        }
+        //{
+        //  "text": "monitor reset",
+        //  "description": "reset MCU",
+        //  "ignoreFailures": false
+        //}//,
+        //{
+        //  "text": "b main",
+        //  "description": "set breakpoints at main",
+        //  "ignoreFailures": false
+        //}
+
+        //{
+        //  "description": "111",
+        //  "text": "-enable-pretty-printing",
+        //  "ignoreFailures": true
+        //}
+      ],
+
+
+      "showDisplayString": true,
+      "miDebuggerServerAddress": "localhost:3333",
+      "launchCompleteCommand": "None",
+      "debugServerPath": "C:\\xpack-openocd-0.11.0-1-win32-x64\\xpack-openocd-0.11.0-1\\bin\\openocd.exe",
+      "debugServerArgs": " -f ${workspaceRoot}\\F7\\StLink.cfg  ",
+      //-c \"init; reset init;\" -c \"program E:/L/Projects/MicroNetworkDevice.Sandbox/build/MCUDebug/sandbox.elf verify reset\"
+      "serverStarted": "Info : Listening on port 3333 for gdb connections",
+      "filterStderr": true,
+      "filterStdout": false,
+      "stopOnEntry": false,
+      //"hardwareBreakpoints": {
+      //  "require": true,
+      //  "limit": 8
+      //},
+      "serverLaunchTimeout": "10000"
+    }
+  ]
+}
