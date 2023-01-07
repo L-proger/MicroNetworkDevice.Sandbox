@@ -1,0 +1,46 @@
+struct Memory4 {
+	uint32 value;
+}
+
+struct Memory8 {
+	Memory4 value1;
+	Memory4 value2;
+}
+
+struct Memory16 {
+	Memory8 value1;
+	Memory8 value2;
+}
+
+struct Memory32 {
+	Memory16 value1;
+	Memory16 value2;
+}
+
+struct Memory64 {
+	Memory32 value1;
+	Memory32 value2;
+}
+
+struct MemoryRegion {
+	uint32 address;
+	uint32 size;
+}
+
+struct MemoryBlob {
+	MemoryRegion header;
+	Memory64 data;
+}
+
+[Guid("CC3BCC31-5BBA-4BE5-B3BD-C7FD854A9C2D")]
+interface IHostToDevice : IUnknown {
+	void read(MemoryRegion request);
+	void write(MemoryBlob request);
+}
+
+
+[Guid("DA97A152-9E0C-43C1-BD60-571C8B4582DF")]
+interface IDeviceToHost : IUnknown {
+	void readResponse(MemoryBlob response);
+	void writeResponse(bool success);
+}
