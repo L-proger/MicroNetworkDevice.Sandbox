@@ -1,6 +1,12 @@
 [submodule "Dependencies/MicroNetworkCommon"]
 	path = Dependencies/MicroNetworkCommon
 	url = https://github.com/L-proger/MicroNetworkCommon.git
+[submodule "Dependencies/MicroNetworkDevice"]
+	path = Dependencies/MicroNetworkDevice
+	url = https://github.com/L-proger/MicroNetworkDevice.git
 [submodule "ComInterfaceGenerator"]
 	path = ComInterfaceGenerator
 	url = https://github.com/L-proger/ComInterfaceGenerator.git
+[submodule "Dependencies/LFramework"]
+	path = Dependencies/LFramework
+	url = https://github.com/L-proger/LFramework.git
