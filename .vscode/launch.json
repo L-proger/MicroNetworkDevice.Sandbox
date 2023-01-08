@@ -17,6 +17,6 @@
             "configFiles": [
                 "${workspaceRoot}/F7/StLink.cfg"
             ]
-        }
+        },
     ]
 }

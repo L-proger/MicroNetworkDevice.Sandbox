@@ -3,8 +3,8 @@
 //imported type: void from module: LanguagePrimitive
 //imported type: bool from module: LanguagePrimitive
 //imported type: ITaskContext from module: MicroNetwork.Device
-#include <MicroNetwork.Common.h>
 #include <MicroNetwork.Device.h>
+#include <MicroNetwork.Common.h>
 namespace MicroNetwork::Device{
     class ITaskContext;
 } //MicroNetwork::Device

@@ -1,0 +1,88 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Generate Interfaces",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${command:cmake.launchTargetPath}",
+            "args": [
+                 "generate", 
+                 "-I", "${workspaceFolder}/../Dependencies/MicroNetworkDevice/Api", 
+                 "-I", "${workspaceFolder}/../Dependencies/MicroNetworkCommon/Api", 
+                 "-o", "${workspaceFolder}/../F7/Interfaces", 
+                 "-l", "Cpp", 
+                 "-e", "false",
+                 "MicroNetwork.Common",  "MicroNetwork.Device", "MicroNetwork.Task.MemoryAccess"],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "miDebuggerPath": "/usr/local/gcc-12.2.0/bin/gdb",
+        },
+        {
+            "name": "SerializeOut",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${command:cmake.launchTargetPath}",
+            "args": [
+                 "generateInterfaceSerializer", 
+                 "-I", "${workspaceFolder}/../Dependencies/MicroNetworkDevice/Api", 
+                 "-I", "${workspaceFolder}/../Dependencies/MicroNetworkCommon/Api", 
+                 "-o", "${workspaceFolder}/../F7/Interfaces", 
+                 "-l", "Cpp", 
+                 "-d", "in", 
+                 "-e", "false",
+                 "MicroNetwork.Task.MemoryAccess.IHostToDevice"],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "miDebuggerPath": "/usr/local/gcc-12.2.0/bin/gdb",
+        },
+        {
+            "name": "SerializeIn",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${command:cmake.launchTargetPath}",
+            "args": [
+                 "generateInterfaceSerializer", 
+                 "-I", "${workspaceFolder}/../Dependencies/MicroNetworkDevice/Api", 
+                 "-I", "${workspaceFolder}/../Dependencies/MicroNetworkCommon/Api", 
+                 "-o", "${workspaceFolder}/../F7/Interfaces", 
+                 "-l", "Cpp", 
+                 "-d", "out", 
+                 "-e", "false",
+                 "MicroNetwork.Task.MemoryAccess.IDeviceToHost"],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "miDebuggerPath": "/usr/local/gcc-12.2.0/bin/gdb",
+        }
+    ]
+}
