@@ -1,7 +1,0 @@
-[
-    {
-        "name": "Stm32",
-        "toolchainFile": "E:\\L\\Projects\\MicroNetworkDevice.Sandbox\\F7\\cmake\\stm32_gcc.cmake"
-    }
-]
-   

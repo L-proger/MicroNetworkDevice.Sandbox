@@ -1,6 +1,6 @@
 #pragma once
 
-#include <LFramework/USB/Device/USBDDevice.h>
+#include <LFramework/USB/Device/UsbDDevice.h>
 #include <LFramework/USB/Device/UsbDBulkInterface.h>
 #include <LFramework/USB/Device/UsbDDeviceContext.h>
 

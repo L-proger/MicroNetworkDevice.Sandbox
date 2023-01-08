@@ -14,7 +14,7 @@ namespace LFramework{
     struct InterfaceAbi<MicroNetwork::Device::ITaskContext> : public InterfaceAbi<MicroNetwork::Common::IDataReceiver>{
         using Base = InterfaceAbi<MicroNetwork::Common::IDataReceiver>;
         //{fcff1d12-3da5-49d9-a860-a61d279486bb}
-        static constexpr InterfaceID ID() { return { 0xfcff1d12, 0x3da5, 0x49d9, { 0xa8, 0x60, 0xa6, 0x1d, 0x27, 0x94, 0x86, 0xbb } }; }
+        static constexpr InterfaceID ID() { return { 0xfcff1d12, 0x49d93da5, 0x1da660a8, 0xbb869427 }; }
         virtual Result LFRAMEWORK_COM_CALL readPackets() = 0;
         virtual Result LFRAMEWORK_COM_CALL isExitRequested(bool& result) = 0;
     private:
@@ -53,7 +53,7 @@ namespace LFramework{
     struct InterfaceAbi<MicroNetwork::Device::ITask> : public InterfaceAbi<MicroNetwork::Common::IDataReceiver>{
         using Base = InterfaceAbi<MicroNetwork::Common::IDataReceiver>;
         //{f00576e3-8670-4e21-9d21-006b466286fb}
-        static constexpr InterfaceID ID() { return { 0xf00576e3, 0x8670, 0x4e21, { 0x9d, 0x21, 0x00, 0x6b, 0x46, 0x62, 0x86, 0xfb } }; }
+        static constexpr InterfaceID ID() { return { 0xf00576e3, 0x4e218670, 0x6b00219d, 0xfb866246 }; }
         virtual Result LFRAMEWORK_COM_CALL run(LFramework::InterfaceAbi<MicroNetwork::Device::ITaskContext>* context) = 0;
     private:
         ~InterfaceAbi() = delete;

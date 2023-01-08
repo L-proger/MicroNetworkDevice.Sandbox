@@ -1,4 +1,4 @@
-target_sources(${PROJECT_NAME} 
+target_sources(ArzhanovF7Devboard
 	PUBLIC
 		LFrameworkConfig.h
 	PRIVATE 
@@ -11,7 +11,7 @@ add_subdirectory(Tasks)
 add_subdirectory(Usb)
 
 
-target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
-target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/Interfaces)
+target_include_directories(ArzhanovF7Devboard PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(ArzhanovF7Devboard PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/Interfaces)
 
 

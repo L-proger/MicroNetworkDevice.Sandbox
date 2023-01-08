@@ -1,4 +1,4 @@
-target_sources(sandbox 
+target_sources(ArzhanovF7Devboard 
 	PRIVATE 
 		ReadMemoryTask.h
 )
