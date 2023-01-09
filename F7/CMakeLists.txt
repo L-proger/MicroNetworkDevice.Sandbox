@@ -1,14 +1,14 @@
 target_sources(ArzhanovF7Devboard
-	PUBLIC
-		LFrameworkConfig.h
-	PRIVATE 
-		main.cpp 
-		rtos.c
+PRIVATE 
+	LFrameworkConfig.h
+	main.cpp 
+	rtos.c
+	Tasks/ReadMemoryTask.h
+	Usb/Usb.h
+	Usb/Usb.cpp
 )
 
 add_subdirectory(Cube)
-add_subdirectory(Tasks)
-add_subdirectory(Usb)
 
 
 target_include_directories(ArzhanovF7Devboard PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
