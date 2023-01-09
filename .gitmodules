@@ -5,7 +5,7 @@
 	path = Dependencies/MicroNetworkDevice
 	url = https://github.com/L-proger/MicroNetworkDevice.git
 [submodule "ComInterfaceGenerator"]
-	path = ComInterfaceGenerator
+	path = ApiGenerator/ComInterfaceGenerator
 	url = https://github.com/L-proger/ComInterfaceGenerator.git
 [submodule "Dependencies/LFramework"]
 	path = Dependencies/LFramework
