@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "stdio.h": "c"
+    },
+    "cortex-debug.openocdPath": "/home/l/Apps/openocd/src/openocd",
+    "cortex-debug.abcd": "hello there"
+}

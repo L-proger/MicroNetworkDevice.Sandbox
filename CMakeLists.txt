@@ -35,7 +35,7 @@ PRIVATE
     GCC::Specs::Nano
 )
 
-gcc_add_linker_script( ArzhanovF7Devboard INTERFACE "${CMAKE_CURRENT_LIST_DIR}/F7/Cube/STM32F746VGTx_FLASH.ld" )
+gcc_add_linker_script( ArzhanovF7Devboard PRIVATE "${CMAKE_CURRENT_LIST_DIR}/F7/Cube/STM32F746VGTx_FLASH.ld" )
 gcc_print_target_size( ArzhanovF7Devboard )
 
 

@@ -7,16 +7,21 @@
         {
             "name": "Cortex Debug",
             "cwd": "${workspaceRoot}",
-            "executable": "${workspaceRoot}/build/sandbox.elf",
+            "executable": "${command:cmake.launchTargetPath}",
             "request": "launch",
             "type": "cortex-debug",
             "servertype": "openocd",
             "device": "STM32F746VG",
-            "svdFile": "C:\\Users\\l-pro\\Downloads\\en.stm32f7_svd\\STM32F7_svd\\STM32F7_svd_V1.5\\STM32F746.svd",
-            "preLaunchTask": "BuildProject",
+            "runToMain": true,
+
+           // "miDebuggerPath": "/usr/local/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gdb",
+           // "svdFile": "C:\\Users\\l-pro\\Downloads\\en.stm32f7_svd\\STM32F7_svd\\STM32F7_svd_V1.5\\STM32F746.svd",
+           // "preLaunchTask": "BuildProject",
             "configFiles": [
                 "${workspaceRoot}/F7/StLink.cfg"
-            ]
+            ],
+            "searchDir": ["/usr/local/share/openocd/scripts"],
+            "showDevDebugOutput":"raw"
         },
     ]
 }
