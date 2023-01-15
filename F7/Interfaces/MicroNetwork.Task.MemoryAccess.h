@@ -124,4 +124,43 @@ namespace LFramework{
         } //writeResponse
     };
 }
+namespace MicroNetwork::Task::MemoryAccess{
+    class IStream;
+} //MicroNetwork::Task::MemoryAccess
+namespace LFramework{
+    //Interface ABI
+    template<>
+    struct InterfaceAbi<MicroNetwork::Task::MemoryAccess::IStream> : public InterfaceAbi<LFramework::IUnknown>{
+        using Base = InterfaceAbi<LFramework::IUnknown>;
+        //{9ac2fee8-ecd0-461d-9906-9bc28d01b9a2}
+        static constexpr InterfaceID ID() { return { 0x9ac2fee8, 0x461decd0, 0xc29b0699, 0xa2b9018d }; }
+        virtual Result LFRAMEWORK_COM_CALL outStream(LFramework::ComPtr<MicroNetwork::Task::MemoryAccess::IHostToDevice>& result) = 0;
+        virtual Result LFRAMEWORK_COM_CALL inStream(LFramework::ComPtr<MicroNetwork::Task::MemoryAccess::IDeviceToHost>& result) = 0;
+    private:
+        ~InterfaceAbi() = delete;
+    }; //IStream
+    //Interface Remap
+    template<class TImplementer>
+    struct InterfaceRemap<MicroNetwork::Task::MemoryAccess::IStream, TImplementer> : public InterfaceRemap<LFramework::IUnknown, TImplementer>{
+        virtual Result LFRAMEWORK_COM_CALL outStream(LFramework::ComPtr<MicroNetwork::Task::MemoryAccess::IHostToDevice>& result){
+            Result comCallResult_ = this->implementer()->outStream(result);
+            return comCallResult_;
+        }
+        virtual Result LFRAMEWORK_COM_CALL inStream(LFramework::ComPtr<MicroNetwork::Task::MemoryAccess::IDeviceToHost>& result){
+            Result comCallResult_ = this->implementer()->inStream(result);
+            return comCallResult_;
+        }
+    };
+    //Interface Wrapper
+    template<>
+    class InterfaceWrapper<MicroNetwork::Task::MemoryAccess::IStream> : public InterfaceWrapper<LFramework::IUnknown> {
+    public:
+        Result outStream(LFramework::ComPtr<MicroNetwork::Task::MemoryAccess::IHostToDevice> result){
+            return reinterpret_cast<InterfaceAbi<MicroNetwork::Task::MemoryAccess::IStream>*>(_abi)->outStream(result);
+        } //outStream
+        Result inStream(LFramework::ComPtr<MicroNetwork::Task::MemoryAccess::IDeviceToHost> result){
+            return reinterpret_cast<InterfaceAbi<MicroNetwork::Task::MemoryAccess::IStream>*>(_abi)->inStream(result);
+        } //inStream
+    };
+}
 

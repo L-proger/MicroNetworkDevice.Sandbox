@@ -83,6 +83,36 @@
                 }
             ],
             "miDebuggerPath": "/usr/local/gcc-12.2.0/bin/gdb",
+        },
+
+
+        {
+            "name": "WriteIoStream",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${command:cmake.launchTargetPath}",
+            "args": [
+                 "generateIoStreamDescriptor", 
+                 "-I", "${workspaceFolder}/../Dependencies/MicroNetworkDevice/Api", 
+                 "-I", "${workspaceFolder}/../Dependencies/MicroNetworkCommon/Api", 
+                 "-o", "${workspaceFolder}/../F7/Interfaces", 
+                 "-l", "Cpp", 
+                 "-e", "false",
+                 "-i",
+                 "MicroNetwork.Task.MemoryAccess.IStream"],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "miDebuggerPath": "/usr/local/gcc-12.2.0/bin/gdb",
         }
     ]
 }
