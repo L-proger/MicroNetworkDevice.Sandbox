@@ -1,7 +1,6 @@
 
 cmake_minimum_required(VERSION 3.16)
 
-set(STM32_DEVICE "STM32F746xx")
 
 set(CMAKE_TOOLCHAIN_FILE ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/LFramework.CMake/stm32_gcc.cmake)
 
@@ -11,7 +10,22 @@ project(sandbox CXX C ASM)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_C_STANDARD 11)
 
-#stm32_fetch_cmsis()
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/LFramework.CMake/stm32)
+set(STM32_DEVICE STM32F746VGT6)
+
+include(fetch)
+FetchStm32Hal()
+FetchStm32FreeRtos()
+FetchStm32CmsisDevice()
+FetchStm32CmsisCore()
+FetchStm32UsbDevice()
+
+find_package(Stm32Hal REQUIRED)
+find_package(Stm32FreeRtos REQUIRED)
+find_package(Stm32CmsisDevice REQUIRED)
+find_package(Stm32CmsisCore REQUIRED)
+find_package(Stm32UsbDevice REQUIRED)
+
 
 set(PROJECT_NAME "sandbox")
 add_executable(ArzhanovF7Devboard )
@@ -29,7 +43,15 @@ add_subdirectory(Dependencies/MicroNetworkDevice)
 
 target_link_libraries(ArzhanovF7Devboard 
 PRIVATE
-    LFramework 
+    Stm32Hal
+    Stm32FreeRtos
+    Stm32CmsisDevice
+    Stm32CmsisCore
+    Stm32UsbDevice
+    LFramework
+    LFramework::Usb
+    LFramework::Usb::Device
+    LFramework::UnitTest
     MicroNetworkCommon 
     MicroNetworkDevice
     STM32::F7
