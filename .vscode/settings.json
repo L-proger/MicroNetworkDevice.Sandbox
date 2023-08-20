@@ -61,7 +61,10 @@
         "stop_token": "cpp",
         "streambuf": "cpp",
         "thread": "cpp",
-        "typeinfo": "cpp"
+        "typeinfo": "cpp",
+        "freertos.h": "c",
+        "task.h": "c",
+        "stm32f7xx_ll_bus.h": "c"
     },
     "cortex-debug.armToolchainPath": "C:\\Program Files (x86)\\Arm GNU Toolchain arm-none-eabi\\12.3 rel1\\bin",
 	"cortex-debug.openocdPath": "C:\\openocd-v0.12.0-i686-w64-mingw32\\bin\\openocd.exe"

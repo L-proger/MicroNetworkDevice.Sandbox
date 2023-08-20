@@ -2,14 +2,14 @@
 #include <FreeRTOS.h>
 #include <task.h>
 #include <stm32f7xx_hal.h>
-#include <main.h>
-
+//#include <main.h>
+#include <stm32f7xx_ll_rcc.h>
 #include <LFramework/Debug.h>
 #include <LFramework/IO/Terminal/TerminalAnsi.h>
 #include <LFramework/Threading/Thread.h>
 #include <cstring>
-#include <usart.h>
-#include <tim.h>
+//#include <usart.h>
+//#include <tim.h>
 
 #include <Usb/Usb.h>
 
@@ -18,6 +18,9 @@
 #include <MicroNetwork/Device/TaskManager.h>
 #include <Tasks/MemoryAccess.h>
 #include <type_traits>
+
+#include "PinMap.h"
+
 using namespace LFramework;
 using namespace MicroNetwork;
 
@@ -110,7 +113,7 @@ private:
 
 
 
-extern"C" void StartDefaultTask(void const * argument){
+void mainThread(void * argument){
 	Terminal::out << Terminal::Ansi::Cursor::MoveHome() << Terminal::Ansi::Viewport::ClearScreen();
 	Debug::Log() << "Hello!";
 
@@ -159,8 +162,7 @@ extern"C" void StartDefaultTask(void const * argument){
 
 }
 
-
-extern "C" void vApplicationStackOverflowHook(xTaskHandle xTask, signed char *pcTaskName){
+extern "C" void vApplicationStackOverflowHook(TaskHandle_t xTask, char *pcTaskName){
 	Debug::Log() << "Stack overflow in task " << (const char*)pcTaskName;
 	for(;;);
 }

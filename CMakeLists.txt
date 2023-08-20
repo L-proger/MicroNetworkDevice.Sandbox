@@ -33,7 +33,23 @@ add_executable(ArzhanovF7Devboard )
 target_compile_definitions(ArzhanovF7Devboard 
 PRIVATE 
     STM32F746xx
+
+    
 )
+
+target_compile_definitions(ArzhanovF7Devboard
+PRIVATE 
+    ${STM32_DEVICE}
+    USE_FULL_LL_DRIVER
+    HSE_VALUE=12000000
+    LF_TARGET_OS=LF_OS_FREERTOS
+    LF_SYSCALLS_STUBS
+    LF_NEWLIB_TO_RTOS_MALLOC
+    LF_TERMINAL_STREAM_USART_STM32
+    LF_TERMINAL_STREAM_USART=USART1
+)
+
+
 
 
 add_subdirectory(F7)
@@ -52,6 +68,9 @@ PRIVATE
     LFramework::Usb
     LFramework::Usb::Device
     LFramework::UnitTest
+    LFramework::Threading
+    LFramework::IO
+    LFramework::IO::Terminal
     MicroNetworkCommon 
     MicroNetworkDevice
     STM32::F7
@@ -59,7 +78,7 @@ PRIVATE
     GCC::Specs::Nano
 )
 
-gcc_add_linker_script( ArzhanovF7Devboard PRIVATE "${CMAKE_CURRENT_LIST_DIR}/F7/Cube/STM32F746VGTx_FLASH.ld" )
+gcc_add_linker_script( ArzhanovF7Devboard PRIVATE "${CMAKE_CURRENT_LIST_DIR}/F7/STM32F746VGTx_FLASH.ld" )
 gcc_print_target_size( ArzhanovF7Devboard )
 
 

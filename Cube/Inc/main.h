@@ -30,6 +30,18 @@ extern "C" {
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f7xx_hal.h"
 
+#include "stm32f7xx_ll_rcc.h"
+#include "stm32f7xx_ll_bus.h"
+#include "stm32f7xx_ll_system.h"
+#include "stm32f7xx_ll_exti.h"
+#include "stm32f7xx_ll_cortex.h"
+#include "stm32f7xx_ll_utils.h"
+#include "stm32f7xx_ll_pwr.h"
+#include "stm32f7xx_ll_dma.h"
+#include "stm32f7xx_ll_tim.h"
+#include "stm32f7xx_ll_usart.h"
+#include "stm32f7xx_ll_gpio.h"
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -58,21 +70,21 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define JOY_DOWN_Y_Pin GPIO_PIN_15
+#define JOY_DOWN_Y_Pin LL_GPIO_PIN_15
 #define JOY_DOWN_Y_GPIO_Port GPIOB
-#define JOY_UP_Z_Pin GPIO_PIN_8
+#define JOY_UP_Z_Pin LL_GPIO_PIN_8
 #define JOY_UP_Z_GPIO_Port GPIOD
-#define JOY_RIGHT_MODE_Pin GPIO_PIN_9
+#define JOY_RIGHT_MODE_Pin LL_GPIO_PIN_9
 #define JOY_RIGHT_MODE_GPIO_Port GPIOD
-#define JOY_LEFT_X_Pin GPIO_PIN_10
+#define JOY_LEFT_X_Pin LL_GPIO_PIN_10
 #define JOY_LEFT_X_GPIO_Port GPIOD
-#define JOY_C_START_Pin GPIO_PIN_11
+#define JOY_C_START_Pin LL_GPIO_PIN_11
 #define JOY_C_START_GPIO_Port GPIOD
-#define JOY_B_A_Pin GPIO_PIN_12
+#define JOY_B_A_Pin LL_GPIO_PIN_12
 #define JOY_B_A_GPIO_Port GPIOD
-#define JOY_SELECT_Pin GPIO_PIN_14
+#define JOY_SELECT_Pin LL_GPIO_PIN_14
 #define JOY_SELECT_GPIO_Port GPIOD
-#define LED_Pin GPIO_PIN_0
+#define LED_Pin LL_GPIO_PIN_0
 #define LED_GPIO_Port GPIOE
 /* USER CODE BEGIN Private defines */
 
@@ -83,5 +95,3 @@ void Error_Handler(void);
 #endif
 
 #endif /* __MAIN_H */
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
