@@ -7,7 +7,7 @@ PRIVATE
 	Usb/Usb.h
 	Usb/Usb.cpp
 	System.cpp
-	InterruptHandlers.c
+	InterruptHandlers.cpp
 )
 
 target_include_directories(ArzhanovF7Devboard PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
