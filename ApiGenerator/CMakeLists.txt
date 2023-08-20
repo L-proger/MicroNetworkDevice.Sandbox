@@ -19,6 +19,8 @@ ComInterfaceGeneratorMakeArgs( OUTMODULES ${ApiInInterfaces} RESULT_VAR "Generat
 set(ApiOutInterfaces "MicroNetwork.Task.MemoryAccess.IDeviceToHost")
 ComInterfaceGeneratorMakeArgs( OUTMODULES ${ApiOutInterfaces} RESULT_VAR "GenerateApiOutSerializersArgs" )
 
+ComInterfaceGeneratorMakeArgs( OUTMODULES "MicroNetwork.Task.MemoryAccess.IStream" RESULT_VAR "GenerateIoStreamDescriptorArgs" )
+
 add_custom_target(GenerateApi
     COMMAND ${CMAKE_COMMAND} -E echo "-- Generating API"
     COMMAND $<TARGET_FILE:ComInterfaceGenerator> "generate" ${GenerateApiArgs}
@@ -26,6 +28,8 @@ add_custom_target(GenerateApi
     COMMAND $<TARGET_FILE:ComInterfaceGenerator> "generateInterfaceSerializer" -d "in" ${GenerateApiInSerializersArgs}
     COMMAND ${CMAKE_COMMAND} -E echo "-- Generating API OUT serializers"
     COMMAND $<TARGET_FILE:ComInterfaceGenerator> "generateInterfaceSerializer" -d "out" ${GenerateApiOutSerializersArgs}
+    COMMAND ${CMAKE_COMMAND} -E echo "-- Generating IO stream descriptor"
+    COMMAND $<TARGET_FILE:ComInterfaceGenerator> "generateIoStreamDescriptor" "--invert" ${GenerateIoStreamDescriptorArgs}
     VERBATIM
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
 )
