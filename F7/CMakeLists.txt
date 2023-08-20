@@ -3,7 +3,7 @@ PRIVATE
 	LFrameworkConfig.h
 	main.cpp 
 	rtos.c
-	Tasks/ReadMemoryTask.h
+	Tasks/MemoryAccess.h
 	Usb/Usb.h
 	Usb/Usb.cpp
 )

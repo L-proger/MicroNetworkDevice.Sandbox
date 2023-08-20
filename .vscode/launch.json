@@ -12,16 +12,11 @@
             "type": "cortex-debug",
             "servertype": "openocd",
             "device": "STM32F746VG",
-            "runToMain": true,
-
-           // "miDebuggerPath": "/usr/local/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gdb",
-           // "svdFile": "C:\\Users\\l-pro\\Downloads\\en.stm32f7_svd\\STM32F7_svd\\STM32F7_svd_V1.5\\STM32F746.svd",
-           // "preLaunchTask": "BuildProject",
+            //"svdFile": "C:\\Users\\l-pro\\Downloads\\en.stm32f7_svd\\STM32F7_svd\\STM32F7_svd_V1.5\\STM32F746.svd",
+            //"preLaunchTask": "BuildProject",
             "configFiles": [
                 "${workspaceRoot}/F7/StLink.cfg"
-            ],
-            "searchDir": ["/usr/local/share/openocd/scripts"],
-            "showDevDebugOutput":"raw"
-        },
+            ]
+        }
     ]
 }
